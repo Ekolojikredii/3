@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekolojik Kredi</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDK -->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+      import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyAsxMZh6GuZDn322Jrt0pq-j0QzWut6Pio",
+        authDomain: "ekolojikkredi-c4565.firebaseapp.com",
+        projectId: "ekolojikkredi-c4565",
+        storageBucket: "ekolojikkredi-c4565.firebasestorage.app",
+        messagingSenderId: "598301088730",
+        appId: "1:598301088730:web:b83ab9a52628f99bcb7ee3",
+        measurementId: "G-7Y60508Q75"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const db = getFirestore(app);
+
+      window.db = db;  // db'yi script.js'de kullanmak için global hale getir
+    </script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <img src="ekokredi-logo.png" alt="Ekolojik Kredi Logo" class="logo">
+            <h1>Ekolojik Kredi</h1>
+            <div class="menu">
+                <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
+                <div class="menu-content" id="menuContent">
+                    <a href="#hazirlayanlar" onclick="showSection('hazirlayanlar')">Hazırlayanlar</a>
+                    <a href="#ekolojikKrediNedir" onclick="showSection('ekolojikKrediNedir')">Ekolojik Kredi Nedir?</a>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <button onclick="showSection('kayit')">Kayıt Ol</button>
+            <button onclick="showSection('veriGoruntuleme')">Veri Görme</button>
+            <button onclick="showSection('veriGirisi')">Veri Girişi</button>
+        </div>
+    </div>
+
+    <div id="hazirlayanlar" class="section">
+        <h2>Hazırlayanlar</h2>
+        <p>Danışman: Osman Onuk</p>
+        <p>Öğrenciler: Muhammedcan Arslanparçası, Yağız Efe Yılmaz, Bilal Yiğit Tezcan</p>
+    </div>
+
+    <div id="ekolojikKrediNedir" class="section">
+        <h2>Ekolojik Kredi Nedir?</h2>
+        <p>Ekolojik Kredi Projesi, çevre bilincini artırmak ve okullarda geri dönüşüm kültürünü geliştirmek amacıyla oluşturulmuştur. Öğrenciler, atıkları türlerine göre ayrıştırarak puan toplar ve ödüller kazanır. Proje, Türkiye'nin sıfır atık hedeflerine ve doğal kaynakların korunmasına katkı sağlamayı amaçlar.</p>
+    </div>
+
+    <div id="kayit" class="section">
+        <h2>Kayıt Ol</h2>
+        <form id="kayitForm">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="il" placeholder="İl" required>
+            <input type="text" name="ilce" placeholder="İlçe" required>
+            <input type="text" name="okul" placeholder="Okul" required>
+            <input type="text" name="okulNumarasi" placeholder="Okul Numarası" required>
+            <input type="text" name="isim" placeholder="İsim" required>
+            <button type="submit">Kayıt Ol</button>
+        </form>
+    </div>
+
+    <div id="veriGoruntuleme" class="section">
+        <h2>Veri Görme</h2>
+        <div class="left-info">
+            <p>İsim: <span id="veriGoruntulemeIsim"></span></p>
+            <p>Puan: <span id="veriGoruntulemePuan"></span></p>
+        </div>
+        <div class="right-info">
+            <h3>Geçmiş Teslimler</h3>
+            <ul id="gecmisTeslimler"></ul>
+        </div>
+    </div>
+
+    <div id="veriGirisi" class="section">
+        <h2>Veri Girişi</h2>
+        <form id="veriGirisiForm">
+            <input type="text" name="okulIsmi" placeholder="Okul İsmi" required>
+            <input type="text" name="okulNumarasi" placeholder="Okul Numarası" required>
+            <input type="text" name="atikTuru" placeholder="Atık Türü" required>
+            <input type="number" name="atikKutlesi" placeholder="Atık Kütlesi (kg)" required>
+            <button type="submit">Veri Gir</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e6ffe6;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left, .right {
+    flex: 1;
+    padding: 20px;
+}
+
+.left {
+    background-color: #d9ffb3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right {
+    background-color: #b3ff99;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.hamburger-menu {
+    font-size: 24px;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-top: 20px;
+}
+
+.menu-content {
+    display: none;
+    background-color: #e6ffe6;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.menu-content a {
+    display: block;
+    padding: 10px 0;
+    color: #006600;
+    text-decoration: none;
+}
+
+.section {
+    display: none;
+    padding: 20px;
+    background-color: #ccffcc;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #006600;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #004d00;
+}
+
+.left-info, .right-info {
+    flex: 1;
+    padding: 20px;
+}
+
+.left-info {
+    background-color: #d9ffb3;
+}
+
+.right-info {
+    background-color: #ccffcc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#gecmisTeslimler {
+    list-style-type: none;
+    padding: 0;
+}
